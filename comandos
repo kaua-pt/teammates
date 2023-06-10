@@ -1,0 +1,3 @@
+gradlew.bat runDatastoreEmulator
+
+gradlew.bat serverRun &
