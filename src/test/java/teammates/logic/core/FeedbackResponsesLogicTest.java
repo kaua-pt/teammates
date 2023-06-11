@@ -1810,7 +1810,20 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertEquals(4, responseForQuestion.size());
         }
 
-        @Test // 1
+        @Test // CT1
+        public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForStudents() {
+                FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
+                FeedbackQuestionAttributes question = builderT.build();
+                List<FeedbackParticipantType> list = new ArrayList<FeedbackParticipantType>();
+
+                list.add(FeedbackParticipantType.STUDENTS);
+                question.setShowResponsesTo(list);
+                FeedbackResponsesLogic instance = FeedbackResponsesLogic.inst();
+
+                assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
+        }
+
+        @Test // CT2
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForEmptyInformations() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1824,20 +1837,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertFalse(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 2
-        public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForStudents() {
-                FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
-                FeedbackQuestionAttributes question = builderT.build();
-                List<FeedbackParticipantType> list = new ArrayList<FeedbackParticipantType>();
-
-                list.add(FeedbackParticipantType.STUDENTS);
-                question.setShowResponsesTo(list);
-                FeedbackResponsesLogic instance = FeedbackResponsesLogic.inst();
-
-                assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
-        }
-
-        @Test // 3
+        @Test // CT3
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForNonStudentsAndRecieversOnlyForTeams() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1852,7 +1852,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 4
+        @Test // CT4
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForNonStudentsAndRecieversOnlyForTeamsAndTheResponseIsVisibleForAllTheTeam() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1867,7 +1867,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 5
+        @Test // CT5
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingForNonStudentsAndRecieversOnlyForTheResponseIsVisibleForAllTheTeam() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1882,7 +1882,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 6
+        @Test // CT6
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingOnlyForRecieversAndRecipientTypeIsATeamButGuiverIsNotAStudent() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1897,7 +1897,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 7
+        @Test // CT7
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingOnlyForRecieversAndRecipientTypeIsAGiverAndGuiverIsAStudent() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
@@ -1912,7 +1912,7 @@ public class FeedbackResponsesLogicTest extends BaseLogicTest {
                 assertTrue(instance.isResponseOfFeedbackQuestionVisibleToStudent(question));
         }
 
-        @Test // 8
+        @Test // CT8
         public void testIfTheFunctionOfIsResponseOfFeedbackQuestionVisibleToStudentIsWorkingOnlyForRecieversAndRecipientTypeIsATeamAndGuiverIsAStudent() {
                 FeedbackQuestionAttributes.Builder builderT = FeedbackQuestionAttributes.builder();
                 FeedbackQuestionAttributes question = builderT.build();
